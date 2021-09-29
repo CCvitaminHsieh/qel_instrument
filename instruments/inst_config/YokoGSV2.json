@@ -1,0 +1,26 @@
+{
+    "name": "YokoGS",
+    "inst_connect": true,
+    "interface": "USB0",
+    "address": "USB0::0x0B21::0x0039::91WB18861::INSTR",
+    "r_terminate": "\n",
+    "w_terminate": null,
+    "timeout": 5,
+    "extension": {
+        "set_dc_mode": {
+            "dc_mode": "VOLTAGE"
+        },
+        "set_dc_output": {
+            "dc_output": 1
+        },
+        "set_range_limit": {
+            "dc_range_limit": "1 V"
+        },
+        "execute_microwave_switch": {
+            "sweep_time": 0.2,
+            "interval_time": 1.5,
+            "init_lower": 0.0,
+            "init_higher": -0.65
+        }
+    }
+}

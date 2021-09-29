@@ -1,0 +1,10 @@
+{
+    "name": "AWG5208",
+    "inst_connect": true,
+    "interface": "TCPIP0",
+    "address": "TCPIP0::192.168.10.42::inst0::INSTR",
+    "r_terminate": "\n",
+    "w_terminate": null,
+    "timeout": 5,
+    "extension": {}
+}
