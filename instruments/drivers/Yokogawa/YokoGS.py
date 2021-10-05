@@ -53,16 +53,6 @@ class YokoGS200(Instrument):
         """
         # unique attributes for yokoGS
         self.__dc_mode = dc_mode
-        # self._yoko_extension = {
-        #     'dc_mode': self.__dc_mode,
-        #     'dc_range_limit': range_limit,
-        #     'dc_output': 0,
-        #     'dc_value': 0.0,
-        #     'sweep_time': 0.0,
-        #     'interval_time': 0.0,
-        #     'lower':0.0,
-        #     'higher':0.0            
-        #     }
         self._yoko_extension = {}
         super().__init__(
             inst_name, inst_address, timeout, self._yoko_extension)
@@ -75,8 +65,6 @@ class YokoGS200(Instrument):
         if (self._inst_name != '') and (self._inst_address != ''):
             self.create_extension_template(self._yoko_extension)
         self.connect()
-        # self.set_dc_mode(self.__dc_mode)
-        # self.set_range_limit(range_limit)
 
         
     def disconnect(self):
@@ -172,7 +160,6 @@ class YokoGS200(Instrument):
             self.update_inst_extension(
                 'set_dc_mode',
                 self._yoko_extension, **{'dc_mode': dc_mode})
-            # self.update_extension(self._yoko_extension, **{'dc_mode': dc_mode})
         else:
             raise Exception('SetDCmodeError! Please modify the dc_mode.')
 
@@ -197,8 +184,6 @@ class YokoGS200(Instrument):
         self.update_inst_extension(
             'set_dc_output',
             self._yoko_extension, **{'dc_output': dc_output})
-        # self.update_extension(
-        #     self._yoko_extension, **{'dc_output': output})
 
     def set_range_limit(self, dc_range_limit:str = '10 mA'):
         """
@@ -239,8 +224,6 @@ class YokoGS200(Instrument):
             self.update_inst_extension(
                 'set_range_limit',
                 self._yoko_extension, **{'dc_range_limit': dc_range_limit})
-            # self.update_extension(
-            #     self._yoko_extension, **{'dc_range_limit': range_limit})
             print(f'\nrangeMode: "{dc_range_limit}"\nSetting successfully!')
         else:
             if (dc_range_limit in rangeV) and (dc_mode in 'CURRENT'):
@@ -316,8 +299,6 @@ class YokoGS200(Instrument):
         """
         if 0.1 <= interval_time <= 3600.0:
             self.write(f':PROG:INT {str(interval_time)}')
-            # self.update_extension(
-            #     self._yoko_extension, **{'interval_time': interval_time})
         else:
             raise Exception(
                 'The range of interval time is from 0.1 to 3600.0 (sec).')
@@ -338,8 +319,6 @@ class YokoGS200(Instrument):
         """
         if 0.0 <= slope_time <= 3600.0:
             self.write(f':PROG:SLOP {str(slope_time)}')
-            # self.update_extension(
-            #     self._yoko_extension, **{'sweep_time': slope_time})
         else:
             raise Exception(
                 'The range of slop time is from 0.0 to 3600.0 (sec).')
@@ -365,10 +344,6 @@ class YokoGS200(Instrument):
         self.set_repeat(int(0))
         self._set_interval_time(interval_time)
         self._set_slope_time(sweep_time)
-        # self.update_inst_extension(
-        #     'set_sweep_rate',
-        #     self._yoko_extension,
-        #     **{'sweep_time': sweep_time, 'interval_time': interval_time})
 
     def set_sweep_slope(self, lower: float, higher: float):
         """
@@ -440,9 +415,6 @@ class YokoGS200(Instrument):
                'interval_time': interval_time,
                'init_lower': init_lower,
                'init_higher': init_higher})
-        # self.update_extension(
-        #     self._yoko_extension,
-        #     **{'lower': init_lower, 'higher': init_higher})
       
         print('\nStart microwaveSwitch.')
         self.set_sweep_slope(init_lower, init_higher)
