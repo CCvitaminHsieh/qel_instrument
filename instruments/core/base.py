@@ -183,27 +183,27 @@ class Instrument:
                 inst_extension[func_name][quantity] = value
                 self._properties['extension'] = inst_extension
             
-    def update_extension(self,
-                         inst_extension: dict,
-                         **extend_properties: dict):
-        """
+#     def update_extension(self,
+#                          inst_extension: dict,
+#                          **extend_properties: dict):
+#         """
         
 
-        Parameters
-        ----------
-        inst_extension : dict
-            DESCRIPTION.
-        **extend_properties : dict
-            DESCRIPTION.
+#         Parameters
+#         ----------
+#         inst_extension : dict
+#             DESCRIPTION.
+#         **extend_properties : dict
+#             DESCRIPTION.
 
-        Returns
-        -------
-        None.
+#         Returns
+#         -------
+#         None.
 
-        """
-        for quantity, value in extend_properties.items():
-            inst_extension[quantity] = value
-            self._properties['extension'] = inst_extension
+#         """
+#         for quantity, value in extend_properties.items():
+#             inst_extension[quantity] = value
+#             self._properties['extension'] = inst_extension
         
     @property
     def get_inst_name(self):
@@ -454,8 +454,3 @@ class Instrument:
 
 if __name__ == '__main__':
     pass
-    # yokoGS = Instrument('YokoDC', 'USB0::0x0B21::0x0039::91WB18861::INSTR')
-    # yokoGS.connect()
-
-    # yokoGS = Instrument()
-    # yokoGS.load_inst_cfg()
