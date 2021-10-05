@@ -3,7 +3,6 @@ import sys
 sys.path.append('../../')
 import numpy as np
 from time import sleep
-# from core.base import Instrument
 from instruments.core.base import Instrument
 
 class AWG5208(Instrument):
