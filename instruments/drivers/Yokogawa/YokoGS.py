@@ -1,7 +1,6 @@
 import sys
 sys.path.append('../../')
 from time import sleep
-# from core.base import Instrument
 from instruments.core.base import Instrument
 
 class YokoGS200(Instrument):
